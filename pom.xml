@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>name.webdizz.grails</groupId>
+	<artifactId>glangs</artifactId>
+	<packaging>pom</packaging>
+	<version>0.1-SNAPSHOT</version>
+	<name>${project.groupId}::${project.artifactId}::${version}</name>
+
+	<!-- Define modules -->
+	<modules>
+		<module>glangs-ast</module>
+	</modules>
+
+	<!-- Define properties -->
+	<properties>
+		<target.dir>d:/tmp/glangs</target.dir>
+		<!--  tell the compiler we can use 1.6 -->
+		<javac.version>1.6</javac.version>
+	</properties>
+
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.grails</groupId>
+				<artifactId>grails-core</artifactId>
+				<version>1.2.1</version>
+			</dependency>
+			<dependency>
+				<groupId>junit</groupId>
+				<artifactId>junit</artifactId>
+				<version>4.7</version>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
+	<!-- Define build settings -->
+	<build>
+		<directory>${target.dir}/${artifactId}</directory>
+		<plugins>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>jalopy-maven-plugin</artifactId>
+				<configuration>
+					<convention>jalopy.xml</convention>
+					<failOnError>false</failOnError>
+				</configuration>
+			</plugin>
+		</plugins>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<version>2.1</version>
+					<configuration>
+						<source>${javac.version}</source>
+						<target>${javac.version}</target>
+						<meminitial>1024m</meminitial>
+						<maxmem>1024m</maxmem>
+						<optimize>false</optimize>
+						<debug>true</debug>
+						<fork>false</fork>
+					</configuration>
+				</plugin>
+				<plugin>
+					<artifactId>maven-war-plugin</artifactId>
+					<version>2.1-beta-1</version>
+				</plugin>
+				<plugin>
+					<artifactId>maven-jar-plugin</artifactId>
+					<version>2.3</version>
+				</plugin>
+				<plugin>
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>jalopy-maven-plugin</artifactId>
+					<version>1.0-alpha-1</version>
+				</plugin>
+				<plugin>
+					<artifactId>maven-resources-plugin</artifactId>
+					<version>2.4.2</version>
+					<configuration>
+						<encoding>UTF-8</encoding>
+					</configuration>
+				</plugin>
+				<plugin>
+					<artifactId>maven-dependency-plugin</artifactId>
+					<version>2.1</version>
+				</plugin>
+				<plugin>
+					<groupId>org.grails</groupId>
+					<artifactId>grails-maven-plugin</artifactId>
+					<version>1.2.1</version>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
+
+	<profiles>
+		<profile>
+			<id>tools</id>
+			<activation>
+				<property>
+					<name>java.vendor</name>
+					<value>Sun Microsystems Inc.</value>
+				</property>
+			</activation>
+			<dependencies>
+				<dependency>
+					<groupId>com.sun</groupId>
+					<artifactId>tools</artifactId>
+					<version>${java.version}</version>
+					<scope>system</scope>
+					<systemPath>${java.home}/../lib/tools.jar</systemPath>
+				</dependency>
+			</dependencies>
+		</profile>
+	</profiles>
+</project>
