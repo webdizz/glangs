@@ -3,7 +3,7 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>name.webdizz.grails</groupId>
-	<artifactId>glangs</artifactId>
+	<artifactId>glangs-root</artifactId>
 	<packaging>pom</packaging>
 	<version>0.1-SNAPSHOT</version>
 	<name>${project.groupId}::${project.artifactId}::${version}</name>
@@ -11,6 +11,7 @@
 	<!-- Define modules -->
 	<modules>
 		<module>glangs-ast</module>
+		<module>glangs-plugin</module>
 	</modules>
 
 	<!-- Define properties -->
@@ -26,6 +27,71 @@
 				<groupId>org.grails</groupId>
 				<artifactId>grails-core</artifactId>
 				<version>1.2.1</version>
+			</dependency>
+			<dependency>
+				<groupId>org.grails</groupId>
+				<artifactId>grails-crud</artifactId>
+				<version>1.2.1</version>
+			</dependency>
+			<dependency>
+				<groupId>org.grails</groupId>
+				<artifactId>grails-gorm</artifactId>
+				<version>1.2.1</version>
+			</dependency>
+			<!-- Grails defaults to Ehache for the second-level Hibernate cache. -->
+			<dependency>
+				<groupId>org.hibernate</groupId>
+				<artifactId>hibernate-ehcache</artifactId>
+				<version>3.3.1.GA</version>
+			</dependency>
+			<dependency>
+				<groupId>javassist</groupId>
+				<artifactId>javassist</artifactId>
+				<version>3.11.0.GA</version>
+			</dependency>
+			<dependency>
+				<groupId>net.sf.ehcache</groupId>
+				<artifactId>ehcache-core</artifactId>
+				<version>1.7.1</version>
+				<exclusions>
+					<exclusion>
+						<artifactId>jms</artifactId>
+					</exclusion>
+					<exclusion>
+						<artifactId>servlet-api</artifactId>
+					</exclusion>
+					<!-- We have JCL-over-SLF4J instead. -->
+					<exclusion>
+						<artifactId>commons-logging</artifactId>
+					</exclusion>
+				</exclusions>
+			</dependency>
+			<!-- For ease of development and testing, we include the HSQLDB database. -->
+			<dependency>
+				<groupId>hsqldb</groupId>
+				<artifactId>hsqldb</artifactId>
+				<version>1.8.0.10</version>
+			</dependency>
+			<!-- Use Log4J for logging. This artifact also pulls in the Log4J JAR. -->
+			<dependency>
+				<groupId>org.slf4j</groupId>
+				<artifactId>slf4j-log4j12</artifactId>
+				<version>1.5.8</version>
+			</dependency>
+			<dependency>
+				<groupId>javax.servlet</groupId>
+				<artifactId>jstl</artifactId>
+				<version>1.2</version>
+			</dependency>
+			<dependency>
+				<groupId>commons-codec</groupId>
+				<artifactId>commons-codec</artifactId>
+				<version>1.4</version>
+			</dependency>
+			<dependency>
+				<groupId>log4j</groupId>
+				<artifactId>log4j</artifactId>
+				<version>1.2.15</version>
 			</dependency>
 			<dependency>
 				<groupId>junit</groupId>
@@ -64,10 +130,6 @@
 					</configuration>
 				</plugin>
 				<plugin>
-					<artifactId>maven-war-plugin</artifactId>
-					<version>2.1-beta-1</version>
-				</plugin>
-				<plugin>
 					<artifactId>maven-jar-plugin</artifactId>
 					<version>2.3</version>
 				</plugin>
@@ -90,7 +152,7 @@
 				<plugin>
 					<groupId>org.grails</groupId>
 					<artifactId>grails-maven-plugin</artifactId>
-					<version>1.2.1</version>
+					<version>1.2.0</version>
 				</plugin>
 			</plugins>
 		</pluginManagement>
