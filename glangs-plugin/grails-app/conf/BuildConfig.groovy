@@ -3,6 +3,7 @@ grails.project.test.class.dir = "target/test-classes"
 grails.project.test.reports.dir	= "target/test-reports"
 //grails.project.war.file = "target/${appName}-${appVersion}.war"
 grails.project.dependency.resolution = {
+	//pom true
     // inherit Grails' default dependencies
     inherits( "global" ) {
         // uncomment to disable ehcache
@@ -12,6 +13,8 @@ grails.project.dependency.resolution = {
     repositories {        
         grailsPlugins()
         grailsHome()
+        flatDir name:'myRepo', dirs:'D:/src/repository'    		
+		mavenRepo "http://artifactory:8081/artifactory/repo"
 
         // uncomment the below to enable remote dependency resolution
         // from public Maven repositories
@@ -24,7 +27,7 @@ grails.project.dependency.resolution = {
     }
     dependencies {
         // specify dependencies here under either 'build', 'compile', 'runtime', 'test' or 'provided' scopes eg.
-
+    	compile 'name.webdizz.grails:glangs-ast:0.1-SNAPSHOT'
         // runtime 'mysql:mysql-connector-java:5.1.5'
     }
 

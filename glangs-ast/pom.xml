@@ -4,7 +4,8 @@
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>name.webdizz.grails</groupId>
-		<artifactId>glangs</artifactId>
+		<artifactId>glangs-root</artifactId>
+		<version>0.1-SNAPSHOT</version>
 	</parent>
 	<artifactId>glangs-ast</artifactId>
 	<version>0.1-SNAPSHOT</version>
