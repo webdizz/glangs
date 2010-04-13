@@ -12,16 +12,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import name.webdizz.grails.glint.Localizable
-
-import org.codehaus.groovy.grails.commons.GrailsDomainClass
-import org.codehaus.groovy.grails.commons.GrailsDomainClassProperty
 
 class GlangsGrailsPlugin {
     // the plugin version
     def version = "0.1"
     // the version or versions of Grails the plugin is designed for
-    def grailsVersion = "1.2.1 > *"
+    def grailsVersion = "1.2.0 > *"
     // the other plugins this plugin depends on
     def dependsOn = [hibernate:"1.1 > *"]
     // resources that are excluded from plugin packaging
@@ -45,21 +41,16 @@ class GlangsGrailsPlugin {
 		if(!config.grails.glint.evaluator) {
 			config.grails.glint.evaluator = { request.user }
 		}
-		if (!config.grails.glint.locale) {
-			config.grails.glint.locale = 'en';
+		if (!config.grails.langs.locale) {
+			config.grails.langs.locale = 'en';
 		}
-		if (!config.grails.glint.locales) {
-			config.grails.glint.locales = ['ru', 'en'];
+		if (!config.grails.langs.locales) {
+			config.grails.langs.locales = ['Ru', 'En'];
 		}
     }
 
     def doWithDynamicMethods = { ctx ->
-		//get all domain classes
-		for(GrailsDomainClass domainClass in application.domainClasses) {
-			if (Localizable.class.isAssignableFrom(domainClass.clazz)) {
-				
-			}
-		}
+		
     }
 
     def doWithApplicationContext = { applicationContext ->

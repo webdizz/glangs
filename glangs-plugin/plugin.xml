@@ -1,4 +1,4 @@
-<plugin name='glangs' version='0.1' grailsVersion='1.2.1 &gt; *'>
+<plugin name='glangs' version='0.1' grailsVersion='1.2.0 &gt; *'>
   <author>Izzet Mustafayev</author>
   <authorEmail>webdizzgmail.com</authorEmail>
   <title>The Grails domain's i18n plugin.</title>
@@ -20,7 +20,7 @@
       <resolver type='flatDir' name='myRepo' dirs='D:/src/repository' />
       <resolver type='mavenRepo' root='http://artifactory:8081/artifactory/repo' name='http://artifactory:8081/artifactory/repo' m2compatbile='true' />
     </resolvers>
-    <dependency group='name.webdizz.grails' name='glangs-ast' version='0.1-SNAPSHOT' conf='runtime' transitive='true' />
+    <dependency group='junit' name='junit' version='4.7' conf='test' transitive='true' />
   </dependencies>
   <behavior />
 </plugin>
