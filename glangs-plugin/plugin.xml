@@ -20,6 +20,7 @@
       <resolver type='flatDir' name='myRepo' dirs='D:/src/repository' />
       <resolver type='mavenRepo' root='http://artifactory:8081/artifactory/repo' name='http://artifactory:8081/artifactory/repo' m2compatbile='true' />
     </resolvers>
+    <dependency group='name.webdizz.grails' name='glangs-ast' version='0.1-SNAPSHOT' conf='runtime' transitive='true' />
   </dependencies>
   <behavior />
 </plugin>
