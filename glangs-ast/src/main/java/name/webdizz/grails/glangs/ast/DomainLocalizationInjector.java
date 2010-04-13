@@ -20,7 +20,6 @@ import java.lang.reflect.Modifier;
 
 import org.codehaus.groovy.ast.ClassNode;
 import org.codehaus.groovy.control.SourceUnit;
-import org.codehaus.groovy.grails.commons.GrailsResourceUtils;
 import org.codehaus.groovy.grails.compiler.injection.DefaultGrailsDomainClassInjector;
 import org.codehaus.groovy.grails.compiler.injection.GrailsASTUtils;
 
@@ -47,12 +46,14 @@ public class DomainLocalizationInjector extends DefaultGrailsDomainClassInjector
 
 	private void injectLocalizableProperties(ClassNode classNode) {
 		
-		GrailsConfig.get("config.grails.glangs.locale");
-		
-		final boolean hasPropery = GrailsASTUtils.hasOrInheritsProperty(classNode, "nameRu");
+		String defLocale = GrailsConfig.get("config.grails.glangs.locale");
+		if(null == defLocale) defLocale = "En";
+		String propName = "name"+defLocale;
+		final boolean hasPropery = GrailsASTUtils.hasOrInheritsProperty(classNode, propName);
 
 		if (!hasPropery) {
-			classNode.addProperty("nameRu", Modifier.PUBLIC, new ClassNode(String.class), null, null, null);
+			classNode.addProperty(propName, Modifier.PUBLIC, new ClassNode(String.class), null, null, null);
+			classNode.addProperty(propName+"Gb", Modifier.PUBLIC, new ClassNode(String.class), null, null, null);
 		}
 	}
 
