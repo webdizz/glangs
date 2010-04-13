@@ -27,7 +27,8 @@ grails.project.dependency.resolution = {
     }
     dependencies {
         // specify dependencies here under either 'build', 'compile', 'runtime', 'test' or 'provided' scopes eg.
-    	runtime 'name.webdizz.grails:glangs-ast:0.1-SNAPSHOT'
+    	test 'junit:junit:4.7'
+    	//runtime 'name.webdizz.grails:glangs-ast:0.1-SNAPSHOT'
         // runtime 'mysql:mysql-connector-java:5.1.5'
     }
 

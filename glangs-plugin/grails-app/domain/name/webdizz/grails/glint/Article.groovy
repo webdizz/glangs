@@ -15,6 +15,8 @@
 
 package name.webdizz.grails.glint
 
+import name.webdizz.grails.langs.ast.Localizable;
+
 
 /**
  * Test entity provided with localized name.
@@ -22,7 +24,8 @@ package name.webdizz.grails.glint
  * @author Izzet_Mustafayev
  *
  */
-class Article implements Localizable {
+@Localizable
+class Article {
 	
 	String name
 	

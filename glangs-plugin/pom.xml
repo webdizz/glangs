@@ -14,11 +14,6 @@
 
 	<dependencies>
 		<dependency>
-			<groupId>name.webdizz.grails</groupId>
-			<artifactId>glangs-ast</artifactId>
-			<version>0.1-SNAPSHOT</version>
-		</dependency>
-		<dependency>
 			<groupId>org.grails</groupId>
 			<artifactId>grails-crud</artifactId>
 			<scope>runtime</scope>
@@ -27,6 +22,16 @@
 			<groupId>org.grails</groupId>
 			<artifactId>grails-gorm</artifactId>
 			<scope>runtime</scope>
+		</dependency>
+		<dependency>
+				<groupId>org.grails</groupId>
+				<artifactId>grails-test</artifactId>
+				<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<scope>test</scope>
 		</dependency>
 		<!-- Grails defaults to Ehache for the second-level Hibernate cache. -->
 		<dependency>
