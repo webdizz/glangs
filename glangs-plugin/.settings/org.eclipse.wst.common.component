@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="glangs-plugin">
+        <wb-resource deploy-path="/" source-path="/src/main/webapp"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/grails-app/conf"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/grails-app/controllers"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/grails-app/domain"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/grails-app/services"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/grails-app/taglib"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/grails-app/utils"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/groovy"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/java"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/test/unit"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/test/integration"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/hibernate-1.2.1-grails-app-i18n"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/tomcat-1.2.1-src-groovy"/>
+        <property name="context-root" value="glangs-plugin"/>
+        <property name="java-output-path" value="/glangs-plugin/tmp/glangs/glangs/classes"/>
+    </wb-module>
+</project-modules>
