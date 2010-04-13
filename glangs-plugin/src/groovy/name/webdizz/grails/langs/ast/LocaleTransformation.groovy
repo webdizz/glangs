@@ -15,25 +15,48 @@
 
 package name.webdizz.grails.langs.ast
 
-
 import java.lang.reflect.Modifier
+import java.net.URL
 import java.util.List
-
+import groovy.util.ConfigObject
+import groovy.util.ConfigSlurper
+import org.codehaus.groovy.control.CompilePhase 
+import org.codehaus.groovy.transform.ASTTransformation 
+import org.codehaus.groovy.transform.GroovyASTTransformation
 import org.codehaus.groovy.ast.ASTNode 
 import org.codehaus.groovy.ast.AnnotationNode
 import org.codehaus.groovy.ast.ClassNode 
 import org.codehaus.groovy.ast.FieldNode
 import org.codehaus.groovy.control.CompilePhase 
-import org.codehaus.groovy.control.SourceUnit 
+import org.codehaus.groovy.control.SourceUnit
 import org.codehaus.groovy.transform.ASTTransformation
-import org.codehaus.groovy.transform.GroovyASTTransformation 
+import org.codehaus.groovy.transform.GroovyASTTransformation
+import java.io.File
 
 /**
+ * Read defined locales from configuration file and inject appropriate properties 
+ * for each marked with {@link name.webdizz.grails.langs.ast.Localizable} annotation domain classes.
+ * 
  * @author Izzet_Mustafayev
  *
  */
-@GroovyASTTransformation(phase = CompilePhase.INSTRUCTION_SELECTION)
+@GroovyASTTransformation(phase = CompilePhase.CANONICALIZATION)
 class LocaleTransformation implements ASTTransformation {
+	
+	/**
+	 * The Grails app locales list.
+	 */
+	private static final String LOCALES = 'grails.langs.locales'
+	
+	/**
+	 * The Grails app default locale.
+	 */
+	private static final String LOCALE = 'grails.langs.locale'
+	
+	/**
+	 * Load and parse Grails config.
+	 */
+	private static ConfigObject config = new ConfigSlurper().parse(new File('grails-app/conf/Config.groovy').toURI().toURL())
 	
 	void visit(ASTNode[] astNodes, SourceUnit sourceUnit) {
 		
@@ -50,9 +73,24 @@ class LocaleTransformation implements ASTTransformation {
 			injectLocalizableProperties(classNode)
 	}
 	
+	private List getLocales(){
+		List locales = []
+		if (!config) {
+			throw new LocalizationException("Unable to read Grails configuration file.")
+		}
+		Map properties = config.flatten()	
+		if(properties.containsKey(LOCALES)){
+			locales = properties.get(LOCALES) as List
+		}
+		locales 
+	}
+	
 	private void injectLocalizableProperties(ClassNode classNode) {
 		List<FieldNode> fields = classNode.getFields()
-		List<String> localeSuffixes = ['Ru']
+		List<String> localeSuffixes = getLocales()
+		if (!localeSuffixes || localeSuffixes.isEmpty()) {
+			throw new LocalizationException("There are no configured locales.")
+		}
 		List<String> properties = []
 		//gather properties to inject
 		if(!fields.isEmpty()){
