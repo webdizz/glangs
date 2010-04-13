@@ -81,5 +81,6 @@ log4j = {
     warn   'org.mortbay.log'
 }
 
-
+grails.langs.locales = ['Ru', 'En']
+grails.langs.locale = 'ru' 
      

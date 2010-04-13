@@ -5,6 +5,7 @@
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/grails-app/conf"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/grails-app/domain"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/test/unit"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/plugins/glangs-0.1/src/groovy"/>
         <property name="context-root" value="glangs-app"/>
         <property name="java-output-path" value="/glangs-app/tmp/glangs/glangs-app/classes"/>
     </wb-module>
