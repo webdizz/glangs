@@ -1,4 +1,4 @@
-/* Copyright 2010 Izzet Mustafayev
+/* Copyright 2010 Izzet Mustafaiev
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,7 +15,7 @@
 package name.webdizz.grails.langs.ast;
 
 /**
- * @author Izzet Mustafayev
+ * @author Izzet Mustafaiev
  *
  */
 class LocalizationException extends RuntimeException {

@@ -1,4 +1,4 @@
-/* Copyright 2010 Izzet Mustafayev
+/* Copyright 2010 Izzet Mustafaiev
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,13 +20,18 @@ class GlangsGrailsPlugin {
     def grailsVersion = "1.2.0 > *"
     // the other plugins this plugin depends on
     def dependsOn = [hibernate:"1.1 > *"]
+   
+	def loadAfter = ['controllers', 'domainClass']
+	                 
+    def loadBefore = ['hibernate']
+	                 
     // resources that are excluded from plugin packaging
     def pluginExcludes = [
             "grails-app/views/error.gsp"
     ]
 
     // TODO Fill in these fields
-    def author = "Izzet Mustafayev"
+    def author = "Izzet Mustafaiev"
     def authorEmail = "webdizzgmail.com"
     def title = "The Grails domain's i18n plugin."
     def description = '''\\
@@ -50,7 +55,18 @@ class GlangsGrailsPlugin {
     }
 
     def doWithDynamicMethods = { ctx ->
-		
+    	
+    	// copied from HibernateGrailsPlugin.groovy file
+    	// aids in generating appropriate documentation in plugin.xml since 
+    	// domain class methods are lazily loaded we initialize them here
+    	if(plugin.basePlugin) {
+			try {
+				def clz = application.classLoader.loadClass("org.grails.Behavior")
+				clz.count()				
+			} catch(e) {
+				// ignore
+			}
+    	}
     }
 
     def doWithApplicationContext = { applicationContext ->
