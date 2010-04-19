@@ -13,6 +13,9 @@
  * limitations under the License.
  */
 
+import org.springframework.context.ApplicationContext
+import name.webdizz.grails.langs.support.GlangsPluginSupport
+
 class GlangsGrailsPlugin {
     // the plugin version
     def version = "0.1"
@@ -27,7 +30,9 @@ class GlangsGrailsPlugin {
 	                 
     // resources that are excluded from plugin packaging
     def pluginExcludes = [
-            "grails-app/views/error.gsp"
+            "grails-app/views/error.gsp",
+            "grails-app/domain/*.groovy",
+    	    "grails-app/controllers/*.groovy"
     ]
 
     // TODO Fill in these fields
@@ -54,8 +59,10 @@ class GlangsGrailsPlugin {
 		}
     }
 
-    def doWithDynamicMethods = { ctx ->
-    	
+    def doWithDynamicMethods = {ApplicationContext ctx ->
+    	def dynamicMethods = GlangsPluginSupport.doWithDynamicMethods
+    	dynamicMethods.delegate = delegate
+		dynamicMethods.call(ctx)
     	// copied from HibernateGrailsPlugin.groovy file
     	// aids in generating appropriate documentation in plugin.xml since 
     	// domain class methods are lazily loaded we initialize them here

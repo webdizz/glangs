@@ -1,5 +1,5 @@
 <plugin name='glangs' version='0.1' grailsVersion='1.2.0 &gt; *'>
-  <author>Izzet Mustafayev</author>
+  <author>Izzet Mustafaiev</author>
   <authorEmail>webdizzgmail.com</authorEmail>
   <title>The Grails domain's i18n plugin.</title>
   <description>\
