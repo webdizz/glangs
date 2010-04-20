@@ -20,9 +20,9 @@ class GlangsGrailsPlugin {
     // the plugin version
     def version = "0.1"
     // the version or versions of Grails the plugin is designed for
-    def grailsVersion = "1.2.0 > *"
+    def grailsVersion = "1.2.2 > *"
     // the other plugins this plugin depends on
-    def dependsOn = [hibernate:"1.1 > *"]
+    def dependsOn = [hibernate:"1.2.2 > *"]
    
 	def loadAfter = ['controllers', 'domainClass']
 	                 
@@ -30,6 +30,7 @@ class GlangsGrailsPlugin {
 	                 
     // resources that are excluded from plugin packaging
     def pluginExcludes = [
+          	"grails-app/conf/Config.groovy",
             "grails-app/views/error.gsp",
             "grails-app/domain/*.groovy",
     	    "grails-app/controllers/*.groovy"
@@ -51,12 +52,12 @@ class GlangsGrailsPlugin {
 		if(!config.grails.glint.evaluator) {
 			config.grails.glint.evaluator = { request.user }
 		}
-		if (!config.grails.langs.locale) {
+		/*if (!config.grails.langs.locale) {
 			config.grails.langs.locale = 'en';
 		}
 		if (!config.grails.langs.locales) {
 			config.grails.langs.locales = ['Ru', 'En'];
-		}
+		}*/
     }
 
     def doWithDynamicMethods = {ApplicationContext ctx ->

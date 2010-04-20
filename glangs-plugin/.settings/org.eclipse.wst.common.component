@@ -13,8 +13,6 @@
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/test/unit"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/test/integration"/>
-        <wb-resource deploy-path="/WEB-INF/classes" source-path="/hibernate-1.2.1-grails-app-i18n"/>
-        <wb-resource deploy-path="/WEB-INF/classes" source-path="/tomcat-1.2.1-src-groovy"/>
         <property name="context-root" value="glangs-plugin"/>
         <property name="java-output-path" value="/glangs-plugin/tmp/glangs/glangs/classes"/>
     </wb-module>

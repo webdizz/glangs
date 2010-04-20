@@ -41,16 +41,4 @@
 		<nature>org.eclipse.wst.common.project.facet.core.nature</nature>
 		<nature>org.eclipse.wst.jsdt.core.jsNature</nature>
 	</natures>
-	<linkedResources>
-		<link>
-			<name>hibernate-1.2.1-grails-app-i18n</name>
-			<type>2</type>
-			<location>C:/Documents and Settings/Izzet_Mustafayev/.grails/1.2.1/projects/glangs-plugin/plugins/hibernate-1.2.1/grails-app/i18n</location>
-		</link>
-		<link>
-			<name>tomcat-1.2.1-src-groovy</name>
-			<type>2</type>
-			<location>C:/Documents and Settings/Izzet_Mustafayev/.grails/1.2.1/projects/glangs-plugin/plugins/tomcat-1.2.1/src/groovy</location>
-		</link>
-	</linkedResources>
 </projectDescription>
