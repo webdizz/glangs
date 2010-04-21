@@ -17,7 +17,10 @@ package name.webdizz.grails.langs.ast
 
 import java.lang.reflect.Modifier
 import java.net.URL
+import java.util.ArrayList;
 import java.util.List
+import java.util.regex.Pattern;
+
 import groovy.util.ConfigObject
 import groovy.util.ConfigSlurper
 import org.codehaus.groovy.control.CompilePhase 
@@ -86,31 +89,21 @@ class LocaleTransformation implements ASTTransformation {
 	}
 	
 	private void injectLocalizableProperties(ClassNode classNode) {
-		List<FieldNode> fields = classNode.getFields()
+		List<FieldNode> fields = new ArrayList<FieldNode>(classNode.getFields())
 		List<String> localeSuffixes = getLocales()
 		if (!localeSuffixes || localeSuffixes.isEmpty()) {
 			throw new LocalizationException("There are no configured locales.")
 		}
-		List<String> properties = []
 		//gather properties to inject
 		if(!fields.isEmpty()){
 			fields.each{ FieldNode field ->
 				if (String.class.getName() == field.getType().getName()) {
 					localeSuffixes.each{ String suffix ->
-						String propName = field.getName()+suffix
-						if(!classNode.hasProperty(propName)){
-							properties.add(propName)
-						}
+						String propName = field.getName()
+						propName = propName+suffix
+						classNode.addProperty(propName, Modifier.PUBLIC, new ClassNode(String.class), null, null, null)
 					}
-				} else {
-					println 'Bad'
 				}
-			}
-		}
-		//inject properties
-		if(!properties.isEmpty()){
-			properties.each{ String prop ->
-				classNode.addProperty(prop, Modifier.PUBLIC, new ClassNode(String.class), null, null, null)
 			}
 		}
 	}

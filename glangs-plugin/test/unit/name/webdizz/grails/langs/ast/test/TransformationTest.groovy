@@ -3,6 +3,7 @@ package name.webdizz.grails.langs.ast.test
 
 import static org.junit.Assert.*
 
+import groovy.lang.MetaClass;
 import name.webdizz.grails.langs.ast.LocaleTransformation 
 
 import org.codehaus.groovy.ast.builder.TranformTestHelper
@@ -13,7 +14,7 @@ import org.junit.Test;
 public class TransformationTest {
 
 	@Test
-	public void testVisit() {
+	public void testLocalizableTransformation() {
         def invoker = new TranformTestHelper(new LocaleTransformation(), CompilePhase.CANONICALIZATION)
 
         def file = new File("./grails-app/domain/name/webdizz/grails/glint/Article.groovy")
@@ -22,9 +23,12 @@ public class TransformationTest {
         def clazz = invoker.parse(file)
         def tester = clazz.newInstance()
         tester.nameRu = ""
-        assertNotNull(tester.nameRu)
-        tester.nameGb = ""
-        assertNotNull(tester.nameGb)
+        assertNotNull("There is no property nameRu", tester.nameRu)
+        tester.nameEn = ""
+        assertNotNull("There is no property nameEn", tester.nameEn)
+        MetaClass mc = tester.metaClass
+        assertTrue("Amount of properties is greater then should be.", mc.properties.size()==8)
+        
 	}
 
 }
