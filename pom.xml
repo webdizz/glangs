@@ -10,7 +10,6 @@
 
 	<!-- Define modules -->
 	<modules>
-		<module>glangs-ast</module>
 		<module>glangs-plugin</module>
 	</modules>
 
