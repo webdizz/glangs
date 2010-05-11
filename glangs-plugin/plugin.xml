@@ -1,6 +1,6 @@
-<plugin name='glangs' version='0.1' grailsVersion='1.2.2 &gt; *'>
+<plugin name='glangs' version='0.1-SNAPSHOT' grailsVersion='1.2.2 &gt; *'>
   <author>Izzet Mustafaiev</author>
-  <authorEmail>webdizzgmail.com</authorEmail>
+  <authorEmail>webdizz@gmail.com</authorEmail>
   <title>The Grails domain's i18n plugin.</title>
   <description>\
 
@@ -8,13 +8,12 @@
   <documentation>http://webdizz.name/tags/glangs</documentation>
   <resources>
     <resource>BuildConfig</resource>
+    <resource>Config</resource>
     <resource>DataSource</resource>
     <resource>UrlMappings</resource>
     <resource>name.webdizz.grails.glint.test.ArticleController</resource>
     <resource>name.webdizz.grails.glint.Article</resource>
   </resources>
-  <dependencies>
-    <plugin name='hibernate' version='1.2.2 &gt; *' />
-  </dependencies>
+  <dependencies />
   <behavior />
 </plugin>

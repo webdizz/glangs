@@ -37,7 +37,10 @@ import org.springframework.context.ApplicationContext
  */
 class GlangsPluginSupport {
 	
-	static final doWithDynamicMethods = {ApplicationContext ctx ->
+	/**
+	 * 
+	 */
+	static final doWithDynamicMethods = { ApplicationContext ctx ->
 		for (GrailsDomainClass dc in application.domainClasses) {
 			registerDynamicMethods(dc, application, ctx)
 		}

@@ -18,11 +18,11 @@ import name.webdizz.grails.langs.support.GlangsPluginSupport
 
 class GlangsGrailsPlugin {
     // the plugin version
-    def version = "0.1"
+    def version = "0.1-SNAPSHOT"
     // the version or versions of Grails the plugin is designed for
-    def grailsVersion = "1.3.0 > *"
+    def grailsVersion = "1.2.2 > *"
     // the other plugins this plugin depends on
-    def dependsOn = [hibernate:"1.3.0 > *"]
+    //def dependsOn = [hibernate:"1.3.0 >= *"]
    
 	def loadAfter = ['controllers', 'domainClass']
 	                 
@@ -33,12 +33,13 @@ class GlangsGrailsPlugin {
           	"grails-app/conf/Config.groovy",
             "grails-app/views/error.gsp",
             "grails-app/domain/*.groovy",
-    	    "grails-app/controllers/*.groovy"
+    	    "grails-app/controllers/*.groovy",
+    	    "test/*.groovy"
     ]
 
     // TODO Fill in these fields
     def author = "Izzet Mustafaiev"
-    def authorEmail = "webdizzgmail.com"
+    def authorEmail = "webdizz@gmail.com"
     def title = "The Grails domain's i18n plugin."
     def description = '''\\
 
@@ -60,7 +61,7 @@ class GlangsGrailsPlugin {
 		}*/
     }
 
-    def doWithDynamicMethods = {ApplicationContext ctx ->
+    def doWithDynamicMethods = { ApplicationContext ctx ->
     	def dynamicMethods = GlangsPluginSupport.doWithDynamicMethods
     	dynamicMethods.delegate = delegate
 		dynamicMethods.call(ctx)
