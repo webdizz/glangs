@@ -13,8 +13,6 @@ grails.project.dependency.resolution = {
     repositories {        
         grailsPlugins()
         grailsHome()
-        flatDir name:'myRepo', dirs:'D:/src/repository'    		
-		mavenRepo "http://artifactory:8081/artifactory/repo"
 
         // uncomment the below to enable remote dependency resolution
         // from public Maven repositories

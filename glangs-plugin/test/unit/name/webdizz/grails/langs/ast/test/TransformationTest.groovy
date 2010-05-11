@@ -3,18 +3,17 @@ package name.webdizz.grails.langs.ast.test
 
 import static org.junit.Assert.*
 
-import groovy.lang.MetaClass;
-import name.webdizz.grails.glint.Article;
+import groovy.lang.MetaClass
+import name.webdizz.grails.glint.Article
 import name.webdizz.grails.langs.ast.LocaleTransformation 
 
-import org.codehaus.groovy.ast.builder.TranformTestHelper
-import org.codehaus.groovy.control.CompilePhase 
-//import org.codehaus.groovy.tools.ast.TranformTestHelper
+import org.codehaus.groovy.control.CompilePhase
 import org.junit.Test
 import groovy.util.ConfigObject
 
-import org.codehaus.groovy.grails.commons.ApplicationHolder;
+import org.codehaus.groovy.grails.commons.ApplicationHolder
 import org.codehaus.groovy.grails.commons.cfg.ConfigurationHelper
+import org.codehaus.groovy.tools.ast.TranformTestHelper
 
 public class TransformationTest {
 
